@@ -1,0 +1,47 @@
+export default {
+  preset: 'ts-jest',
+  testEnvironment: 'node',
+  roots: ['<rootDir>/src'],
+  testMatch: ['**/__tests__/**/*.test.ts', '**/?(*.)+(spec|test).ts'],
+  testPathIgnorePatterns: ['/node_modules/', '/dist/', 'setup.ts'],
+  setupFilesAfterEnv: ['<rootDir>/src/__tests__/setup.ts'],
+  extensionsToTreatAsEsm: ['.ts'],
+  moduleNameMapper: {
+    '^@student-api/shared-config$': '<rootDir>/../../packages/shared-config/src/index.ts',
+    '^@student-api/shared-logger$': '<rootDir>/../../packages/shared-logger/src/index.ts',
+    '^@student-api/shared-middleware$': '<rootDir>/../../packages/shared-middleware/src/index.ts',
+    '^@student-api/shared-types$': '<rootDir>/../../packages/shared-types/src/index.ts',
+    '^@student-api/shared-utils$': '<rootDir>/../../packages/shared-utils/src/index.ts',
+    '^@student-api/shared-zod-schemas$': '<rootDir>/../../packages/shared-zod-schemas/src/index.ts',
+    '^@student-api/shared-constants$': '<rootDir>/../../packages/shared-constants/src/index.ts',
+    '^@/(.*)$': '<rootDir>/src/$1',
+    '^@config/(.*)$': '<rootDir>/src/config/$1',
+    '^@constants/(.*)$': '<rootDir>/src/constants/$1',
+    '^@controllers/(.*)$': '<rootDir>/src/controllers/$1',
+    '^@services/(.*)$': '<rootDir>/src/services/$1',
+    '^@models/(.*)$': '<rootDir>/src/models/$1',
+    '^@middleware/(.*)$': '<rootDir>/src/middleware/$1',
+    '^@types/(.*)$': '<rootDir>/src/types/$1',
+    '^@utils/(.*)$': '<rootDir>/src/utils/$1',
+    '^(\\.{1,2}/.*)\\.js$': '$1',
+  },
+  transform: {
+    '^.+\\.tsx?$': [
+      'ts-jest',
+      {
+        useESM: true,
+      },
+    ],
+  },
+  transformIgnorePatterns: [
+    'node_modules/(?!(@student-api)/)',
+  ],
+  collectCoverageFrom: [
+    'src/**/*.ts',
+    '!src/**/*.test.ts',
+    '!src/**/*.spec.ts',
+    '!src/index.ts',
+  ],
+  coverageDirectory: 'coverage',
+  coverageReporters: ['text', 'lcov', 'html'],
+};

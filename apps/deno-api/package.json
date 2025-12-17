@@ -1,0 +1,13 @@
+{
+  "name": "@student-api/deno-api",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "deno task dev",
+    "start": "deno task start",
+    "test": "deno test --allow-net --allow-env --allow-sys --allow-read --env-file=.env --no-check",
+    "benchmark": "deno task benchmark",
+    "seed": "deno task seed"
+  }
+}

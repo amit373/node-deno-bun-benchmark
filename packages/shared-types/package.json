@@ -1,0 +1,25 @@
+{
+  "name": "@student-api/shared-types",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf dist",
+    "lint": "eslint src --ext .ts"
+  },
+  "devDependencies": {
+    "@student-api/eslint-config": "workspace:*",
+    "@student-api/tsconfig": "workspace:*",
+    "typescript": "^5.3.3"
+  }
+}

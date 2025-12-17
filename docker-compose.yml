@@ -1,0 +1,64 @@
+services:
+  mongodb:
+    image: mongo:7.0
+    container_name: student-api-mongodb
+    env_file:
+      - .env
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD}
+      MONGO_INITDB_DATABASE: ${MONGO_DATABASE}
+    ports:
+      - '27017:27017'
+    volumes:
+      - mongodb_data:/data/db
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  express-api:
+    build:
+      context: .
+      dockerfile: apps/express-api/Dockerfile
+    container_name: express-api
+    ports:
+      - "${EXPRESS_PORT:-3000}:${EXPRESS_PORT:-3000}"
+    env_file:
+      - apps/express-api/.env
+    depends_on:
+      mongodb:
+        condition: service_healthy
+    restart: unless-stopped
+
+  bun-api:
+    build:
+      context: .
+      dockerfile: apps/bun-api/Dockerfile
+    container_name: bun-api
+    ports:
+      - "${BUN_PORT:-3001}:${BUN_PORT:-3001}"
+    env_file:
+      - apps/bun-api/.env
+    depends_on:
+      mongodb:
+        condition: service_healthy
+    restart: unless-stopped
+
+  deno-api:
+    build:
+      context: .
+      dockerfile: apps/deno-api/Dockerfile
+    container_name: deno-api
+    ports:
+      - "${DENO_PORT:-3002}:${DENO_PORT:-3002}"
+    env_file:
+      - apps/deno-api/.env
+    depends_on:
+      mongodb:
+        condition: service_healthy
+    restart: unless-stopped
+
+volumes:
+  mongodb_data:

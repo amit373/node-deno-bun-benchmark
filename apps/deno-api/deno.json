@@ -1,0 +1,38 @@
+{
+  "tasks": {
+    "dev": "deno run --allow-net --allow-env --allow-read --allow-sys --env-file=.env --watch src/index.ts",
+    "start": "deno run --allow-net --allow-env --allow-read --allow-sys --env-file=.env src/index.ts",
+    "test": "deno test --allow-net --allow-env --env-file=.env",
+    "benchmark": "deno run --allow-net --allow-env --env-file=.env src/benchmark.ts",
+    "seed": "deno run --allow-net --allow-env --allow-read --env-file=.env src/seed.ts"
+  },
+  "imports": {
+    "@student-api/shared-config": "../../packages/shared-config/src/index.ts",
+    "@student-api/shared-constants": "../../packages/shared-constants/src/index.ts",
+    "@student-api/shared-logger": "../../packages/shared-logger/src/index.ts",
+    "@student-api/shared-types": "../../packages/shared-types/src/index.ts",
+    "@student-api/shared-utils": "../../packages/shared-utils/src/index.ts",
+    "@student-api/shared-zod-schemas": "../../packages/shared-zod-schemas/src/index.ts",
+    "mongodb": "npm:mongodb@^6.3.0",
+    "pino": "npm:pino@^8.17.2",
+    "pino-pretty": "npm:pino-pretty@^10.3.1",
+    "jsonwebtoken": "npm:jsonwebtoken@^9.0.2",
+    "bcryptjs": "npm:bcryptjs@^2.4.3",
+    "oak": "https://deno.land/x/oak@v12.6.1/mod.ts",
+    "zod": "https://deno.land/x/zod@v3.22.4/mod.ts",
+    "bcrypt": "https://deno.land/x/bcrypt@v0.4.1/mod.ts",
+    "djwt": "https://deno.land/x/djwt@v3.0.1/mod.ts"
+  },
+  "compilerOptions": {
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictBindCallApply": true,
+    "strictPropertyInitialization": true,
+    "noImplicitThis": true,
+    "lib": ["deno.window", "deno.unstable"],
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true
+  }
+}
