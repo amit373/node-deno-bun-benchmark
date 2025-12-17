@@ -1,6 +1,5 @@
 # 🚀 Student Management API - Node.js vs Deno vs Bun Benchmark
 
-[![CI/CD](https://github.com/yourusername/student-api/workflows/CI/badge.svg)](https://github.com/yourusername/student-api/actions)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.3-blue)](https://www.typescriptlang.org/)
 [![Node.js](https://img.shields.io/badge/Node.js-22.x-green)](https://nodejs.org/)
 [![Deno](https://img.shields.io/badge/Deno-2.x-black)](https://deno.land/)
@@ -141,8 +140,6 @@ This project uses **MongoDB exclusively** across all three runtimes:
 - `classes` - Course information
 - `grades` - Student grades and assessments
 
-See [`MONGODB_MIGRATION.md`](./MONGODB_MIGRATION.md) for detailed schema documentation and migration guide.
-
 ## 📝 License
 
 MIT
@@ -150,7 +147,3 @@ MIT
 ---
 
 **Architecture**: MongoDB-only, no mock data, fully database-driven across all runtimes!
-
-## 📱 Share on LinkedIn
-
-Want to share this project? Check out [`LINKEDIN_POST.md`](./LINKEDIN_POST.md) for a ready-to-use LinkedIn post template!
